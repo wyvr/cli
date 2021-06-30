@@ -1,0 +1,1 @@
+const wyvr = require('wyvr-generator')

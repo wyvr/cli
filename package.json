@@ -1,0 +1,36 @@
+{
+    "name": "wyvr-cli",
+    "version": "0.0.0",
+    "description": "cli to generate themes, plugins, components and much more for the wyvr generator",
+    "bin": {
+        "wyvr-cli": "./index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wyvr/cli.git"
+    },
+    "keywords": [
+        "wyvr",
+        "cli",
+        "generator"
+    ],
+    "author": "wyvr",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wyvr/cli/issues"
+    },
+    "homepage": "https://github.com/wyvr/cli#readme",
+    "dependencies": {
+        "ansi-colors": "^4.1.1",
+        "commander": "^8.0.0",
+        "fs-extra": "^10.0.0",
+        "inquirer": "^8.1.1"
+    },
+    "devDependencies": {
+        "@types/inquirer": "^7.3.2",
+        "@types/node": "^15.12.5"
+    }
+}
