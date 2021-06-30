@@ -4,18 +4,9 @@ const helper = {
 
     find_cwd(type) {
         const cwd = process.cwd();
-        // if (['project', 'theme', 'plugin'].indexOf(type) > -1) {
-        //     return cwd;
-        // }
-        // if (type == 'component') {
-        //     let dir = cwd;
-        //     while (!helper.contains_folder_wyvr_file(dir) && dir != '/') {
-        //         dir = join(dir, '..');
-        //     }
-        //     if (dir == '/') {
-        //         return cwd;
-        //     }
-        //     return dir;
+        // let required_parts = [];
+        // if (['component'].indexOf(type) > -1) {
+        //     required_parts.push('/src/');
         // }
         return cwd;
     },
