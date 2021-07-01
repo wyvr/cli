@@ -65,17 +65,23 @@ const create = {
                 }
                 content.push('    }');
                 content.push('');
-                content.push('    // Static entrypoint');
-                content.push('    onServer(() => {');
-                content.push(`        name = 'server';`);
-                content.push('    })');
+                if (features.indexOf('on_server') > -1) {
+                    content.push('    // Static entrypoint');
+                    content.push('    onServer(() => {');
+                    content.push(`        name = 'server';`);
+                    content.push('    })');
+                }
                 content.push('');
                 if (features.indexOf('hydrate') > -1) {
                     content.push('    // Client hydration');
-                    content.push('    let on_server = true;');
+                    if (features.indexOf('on_server') > -1) {
+                        content.push('    let on_server = true;');
+                    }
                     content.push(`    import { onMount } from 'svelte';`);
                     content.push(`    onMount(() => {`);
-                    content.push('        on_server = false;');
+                    if (features.indexOf('on_server') > -1) {
+                        content.push('        on_server = false;');
+                    }
                     content.push(`        name = 'client';`);
                     content.push('    })');
                     content.push('');
@@ -89,11 +95,11 @@ const create = {
                     content.push('');
                 }
                 content.push('    // Property which can be set from parent component');
-                content.push('    export let name = null;');
+                content.push(`    export let name = 'initial';`);
                 content.push('');
                 content.push('</script>');
                 content.push('');
-                if (features.indexOf('hydrate') > -1) {
+                if (features.indexOf('on_server') > -1) {
                     content.push('<div class:static={on_server}>');
                 } else {
                     content.push('<div>');
@@ -106,7 +112,8 @@ const create = {
                 content.push('</div>');
                 content.push('');
                 content.push('<style>');
-                if (features.indexOf('hydrate') > -1) {
+                content.push('    /* Place your scoped styles here */');
+                if (features.indexOf('on_server') > -1) {
                     content.push('    .static { opacity: 0.9; }');
                 }
                 content.push('</style>');

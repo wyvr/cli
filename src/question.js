@@ -110,8 +110,12 @@ module.exports = {
         if (type != 'component' || flavour != 'component') {
             return [];
         }
-        const predefined = ['hydrate'];
+        const predefined = ['hydrate', 'on_server'];
         const choices = [
+            {
+                name: '⚡️ onServer',
+                value: 'on_server',
+            },
             {
                 name: '✨ Hydrate',
                 value: 'hydrate',
