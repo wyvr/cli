@@ -9,11 +9,11 @@ module.exports = {
                     type: 'list',
                     message: 'Select type',
                     name: 'result',
-                    default: 'project',
+                    default: 'component',
                     choices: [
                         {
-                            name: '🚀 Project',
-                            value: 'project',
+                            name: '📦️ Component',
+                            value: 'component',
                         },
                         {
                             name: '🎨 Theme',
@@ -24,8 +24,8 @@ module.exports = {
                             value: 'plugin',
                         },
                         {
-                            name: '📦️ Component',
-                            value: 'component',
+                            name: '🚀 Project',
+                            value: 'project',
                         },
                     ],
                 },
@@ -36,7 +36,7 @@ module.exports = {
         }
         return null;
     },
-    async get_dir(dir, type) {
+    async get_dir(dir, type, flavour) {
         try {
             const { result } = await inquirer.prompt([
                 {
