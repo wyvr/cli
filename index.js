@@ -5,8 +5,8 @@ const { join } = require('path');
 const colors = require('ansi-colors');
 const program = new Command();
 
-const { get_type, get_dir, get_name, confirm_name, get_flavour, get_features } = require('./src/question');
-const { find_cwd, convert_name_to_file_name, create } = require('./src/helper');
+const { get_type, get_dir, get_name, get_flavour, get_features } = require('./src/question');
+const { correct_dir, convert_name_to_file_name } = require('./src/helper');
 const { start } = require('./src/create');
 
 const pkg_content = readFileSync(join(__dirname, 'package.json'), { encoding: 'utf-8' });
@@ -51,16 +51,16 @@ program.action(async () => {
     while (!type) {
         type = await get_type();
     }
-    // get cwd
-    const cwd = find_cwd(type);
-    const dir = await get_dir(cwd, type);
-    // get the name
-    const name = await get_name(type);
-    const file_name = convert_name_to_file_name(name, type);
     // select the features for the type
     const flavour = await get_flavour(type);
     // select the features for the type
     const features = await get_features(type, flavour);
+    // get the name
+    const name = await get_name(type);
+    const file_name = convert_name_to_file_name(name, type);
+    // get cwd
+    const cwd = await correct_dir(type, flavour);
+    const dir = await get_dir(cwd, type, flavour);
     start(type, dir, file_name, flavour, features);
     console.log(colors.green(`✓ created ${type}`));
 });
