@@ -27,6 +27,11 @@ program
     .option('-c, --component', 'create wyvr/svelte component');
 
 program.action(async () => {
+    const logo = [`__  __  __  __  __  ____`, `\\ \\/ /\\/ /\\/ /\\/ /\\/ /_/`, ` \\/_/\\/_/\\/ /\\/_/\\/_/`, `         /_/ cli ${colors.dim(version)}`].join(
+        '\n'
+    );
+    console.log(colors.cyan(logo));
+    console.log('');
     // init value
     const options = program.opts();
     let type = null;
