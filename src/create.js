@@ -7,11 +7,17 @@ const create = {
             case 'project':
                 create.create_project(dir, file_name, flavour, features);
                 break;
+            case 'package':
+                create.create_package(dir, file_name, flavour, features);
+                break;
             case 'theme':
                 create.create_theme(dir, file_name, flavour, features);
                 break;
             case 'plugin':
                 create.create_plugin(dir, file_name, flavour, features);
+                break;
+            case 'route':
+                create.create_route(dir, file_name, flavour, features);
                 break;
             case 'component':
                 create.create_component(dir, file_name, flavour, features);
@@ -21,6 +27,12 @@ const create = {
     create_project(dir, file_name, flavour, features) {
         const target = join(dir, file_name);
         const resource = join(__dirname, '../resources/project');
+        create.copy_resource(resource, target);
+        create.copy_wyvr_file(dir, file_name);
+    },
+    create_package(dir, file_name, flavour, features) {
+        const target = join(dir, file_name);
+        const resource = join(__dirname, '../resources/package');
         create.copy_resource(resource, target);
         create.copy_wyvr_file(dir, file_name);
     },
@@ -35,6 +47,12 @@ const create = {
         const resource = join(__dirname, '../resources/plugin');
         create.copy_resource(resource, target);
         // @TODO rename vendor and name folders
+        create.copy_wyvr_file(dir, file_name);
+    },
+    create_route(dir, file_name, flavour, features) {
+        const target = join(dir, file_name);
+        const resource = join(__dirname, '../resources/route');
+        create.copy_resource(resource, target);
         create.copy_wyvr_file(dir, file_name);
     },
     create_component(dir, file_name, flavour, features) {

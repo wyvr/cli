@@ -12,15 +12,23 @@ module.exports = {
                     default: 'component',
                     choices: [
                         {
-                            name: `📦️ Component ${colors.dim('generate a new component')}`,
+                            name: `🧩 Component ${colors.dim('generate a new component')}`,
                             value: 'component',
                         },
                         {
-                            name: `🎨 Theme ${colors.dim('scaffolds a new theme')}`,
+                            name: `📦️ Package ${colors.dim('scaffolds a new package')}`,
+                            value: 'package',
+                        },
+                        {
+                            name: `🎨 Theme Package ${colors.dim('scaffolds a new theme package')}`,
                             value: 'theme',
                         },
                         {
-                            name: `⚡️ Plugin ${colors.dim('scaffolds a new plugin')}`,
+                            name: `📝 Route Package ${colors.dim('scaffolds a new routes package')}`,
+                            value: 'route',
+                        },
+                        {
+                            name: `🔌 Plugin Package ${colors.dim('scaffolds a new plugin package')}`,
                             value: 'plugin',
                         },
                         {
@@ -82,7 +90,7 @@ module.exports = {
                     default: 'component',
                     choices: [
                         {
-                            name: `📦️ Component ${colors.dim('generate a component')}`,
+                            name: `🧩 Component ${colors.dim('generate a component')}`,
                             value: 'component',
                         },
                         {
