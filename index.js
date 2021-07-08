@@ -61,7 +61,7 @@ program.action(async () => {
     // select the features for the type
     const features = await get_features(type, flavour);
     // get the name
-    const name = await get_name(type);
+    const name = await get_name(type, flavour);
     const file_name = convert_name_to_file_name(name, type);
     // get cwd
     const cwd = await correct_dir(type, flavour);

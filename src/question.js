@@ -20,18 +20,6 @@ module.exports = {
                             value: 'package',
                         },
                         {
-                            name: `🎨 Theme Package ${colors.dim('scaffolds a new theme package')}`,
-                            value: 'theme',
-                        },
-                        {
-                            name: `📝 Route Package ${colors.dim('scaffolds a new routes package')}`,
-                            value: 'route',
-                        },
-                        {
-                            name: `🔌 Plugin Package ${colors.dim('scaffolds a new plugin package')}`,
-                            value: 'plugin',
-                        },
-                        {
                             name: `🚀 Project ${colors.dim('scaffolds a new project')}`,
                             value: 'project',
                         },
@@ -60,8 +48,24 @@ module.exports = {
         }
         return null;
     },
-    async get_name(type) {
-        const name = type == 'component' ? 'Component.svelte' : '';
+    async get_name(type, flavour) {
+        let name = '';
+        if (type != 'project') {
+            if (type == 'component') {
+                const flavour_cap = flavour
+                    .split('')
+                    .map((x, i) => {
+                        if (i > 0) {
+                            return x;
+                        }
+                        return x.toUpperCase();
+                    })
+                    .join('');
+                name = `${flavour_cap}.svelte`;
+            } else {
+                name = flavour;
+            }
+        }
         try {
             const { result } = await inquirer.prompt([
                 {
@@ -78,8 +82,51 @@ module.exports = {
         return null;
     },
     async get_flavour(type) {
-        if (type != 'component') {
+        if (type == 'project') {
             return [];
+        }
+        let choices = [];
+        switch (type) {
+            case 'component':
+                choices = [
+                    {
+                        name: `🧩 Component ${colors.dim('generate a component')}`,
+                        value: 'component',
+                    },
+                    {
+                        name: `📄 Page ${colors.dim('generate a page component')}`,
+                        value: 'page',
+                    },
+                    {
+                        name: `🍱 Layout ${colors.dim('generate a layout component')}`,
+                        value: 'layout',
+                    },
+                    {
+                        name: `🔧 Document ${colors.dim('generate a doc component')}`,
+                        value: 'doc',
+                    },
+                ];
+                break;
+            case 'package':
+                choices = [
+                    {
+                        name: `📦️ Package ${colors.dim('scaffolds a new package')}`,
+                        value: 'package',
+                    },
+                    {
+                        name: `🎨 Theme Package ${colors.dim('scaffolds a new theme package')}`,
+                        value: 'theme',
+                    },
+                    {
+                        name: `📝 Route Package ${colors.dim('scaffolds a new routes package')}`,
+                        value: 'route',
+                    },
+                    {
+                        name: `🔌 Plugin Package ${colors.dim('scaffolds a new plugin package')}`,
+                        value: 'plugin',
+                    },
+                ];
+                break;
         }
         try {
             const { result } = await inquirer.prompt([
@@ -88,24 +135,7 @@ module.exports = {
                     message: `Select ${type} flavour`,
                     name: 'result',
                     default: 'component',
-                    choices: [
-                        {
-                            name: `🧩 Component ${colors.dim('generate a component')}`,
-                            value: 'component',
-                        },
-                        {
-                            name: `📄 Page ${colors.dim('generate a page component')}`,
-                            value: 'page',
-                        },
-                        {
-                            name: `🍱 Layout ${colors.dim('generate a layout component')}`,
-                            value: 'layout',
-                        },
-                        {
-                            name: `🔧 Document ${colors.dim('generate a doc component')}`,
-                            value: 'doc',
-                        },
-                    ],
+                    choices,
                 },
             ]);
             return result;
