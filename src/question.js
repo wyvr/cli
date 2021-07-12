@@ -12,7 +12,7 @@ module.exports = {
                     default: 'component',
                     choices: [
                         {
-                            name: `🧩 Component ${colors.dim('generate a new component')}`,
+                            name: `➕ Component ${colors.dim('generate a new component')}`,
                             value: 'component',
                         },
                         {
@@ -90,7 +90,7 @@ module.exports = {
             case 'component':
                 choices = [
                     {
-                        name: `🧩 Component ${colors.dim('generate a component')}`,
+                        name: `➕ Component ${colors.dim('generate a component')}`,
                         value: 'component',
                     },
                     {
