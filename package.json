@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "cli to generate themes, plugins, components and much more for the wyvr generator",
     "bin": {
-        "wyvr-cli": "./index.js"
+        "wyvr": "./index.js"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
