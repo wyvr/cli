@@ -1,5 +1,5 @@
 {
-    "name": "wyvr-cli",
+    "name": "@wyvr/cli",
     "version": "0.0.0",
     "description": "cli to generate themes, plugins, components and much more for the wyvr generator",
     "bin": {
