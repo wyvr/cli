@@ -19,9 +19,6 @@
     ],
     "author": "wyvr",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/wyvr/cli/issues"
-    },
     "homepage": "https://github.com/wyvr/cli#readme",
     "dependencies": {
         "ansi-colors": "^4.1.1",
