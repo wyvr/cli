@@ -1,0 +1,14 @@
+{
+    "name": "wyvr-project",
+    "description": "wyvr project",
+    "scripts": {
+        "dev": "env WYVR_ENV=dev node ./index.js"
+    },
+    "keywords": [
+        "wyvr",
+        "generator"
+    ],
+    "dependencies": {
+        "@wyvr/generator": "^0"
+    }
+}

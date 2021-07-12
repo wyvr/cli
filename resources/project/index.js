@@ -1,1 +1,1 @@
-const wyvr = require('wyvr-generator')
+const wyvr = require('@wyvr/generator')
